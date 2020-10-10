@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: orange[400],
     cursor: "pointer",
-    marginLeft: "1%",
+    marginLeft: "2%",
   },
   bellNotifications: {
     margin: "0 1%",

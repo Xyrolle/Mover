@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -21,11 +22,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Movie = ({ title, poster }) => {
+const Movie = ({ title, poster, id }) => {
   const classes = useStyles();
   return (
     <Grid item xs={3} className={classes.cell}>
-      <img src={poster} className={classes.poster} />
+      <Link to={`movie_info/${id}`}>
+        <img src={poster} className={classes.poster} alt="movie poster" />
+      </Link>
       <Typography
         variant="subtitle1"
         style={{ lineHeight: "1" }}

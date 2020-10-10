@@ -15,7 +15,7 @@ const fetchMoviesByKeyword = (keyword) => ({
 });
 
 const fetchMovieByID = (id) => ({
-  type: MOVIES.FETCH_BY_KEYWORD,
+  type: MOVIES.FETCH_BY_ID,
   id,
 });
 

@@ -1,13 +1,17 @@
 const KEY = "3a4f942539cdf3dbac0716276833cf4b";
 const BASE_URL = "https://api.themoviedb.org/3";
 
-const fetchMovieByID = async (id) => {
-  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${KEY}`);
+const fetchMovieByID = async ({ id }) => {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${KEY}&language=en-US`
+  );
   const data = await response.json();
 
   if (data.errors) {
     throw new Error(`Error while fetching: ${data.errors}`);
   }
+
+  console.log(data, "is");
 
   return data;
 };
