@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2rem",
     paddingTop: "12vh",
     textAlign: "center",
+    color: "#ffffff",
   },
 }));
 

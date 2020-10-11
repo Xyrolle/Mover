@@ -20,9 +20,9 @@ export function* handleFetchPopularMovies() {
   }
 }
 
-export function* handleFetchByKeyword() {
+export function* handleFetchByKeyword(keyword) {
   try {
-    const keyword = yield select(selectKeyword);
+    console.log(keyword, "keyword in handle fetch by keyword");
     const movies = yield call(fetchMoviesByKeyword, keyword);
     yield put(setMovies(movies));
   } catch (error) {

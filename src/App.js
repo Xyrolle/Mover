@@ -1,10 +1,15 @@
 import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 
+import { makeStyles } from "@material-ui/core/styles";
+
 import { Route } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
+import purple from "@material-ui/core/colors/purple";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 import theme from "./MUI/theme";
 
@@ -18,15 +23,21 @@ import "./App.css";
 import configureStore from "./store";
 const store = configureStore();
 
+// const useStyles = makeStyles((theme) => ({
+//   mainColor: {},
+// }));
+
 const App = () => {
+  // const classes = useStyles();
   return (
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
-        <Fragment>
+        <div>
           <Route path="/" component={Searchbar} />
           <Route exact path="/popular" component={PopularPage} />
           <Route path="/movie_info/:id" component={MoviePage} />
-        </Fragment>
+          <Route path="/searchMovie" component={SearchPage} />
+        </div>
       </MuiThemeProvider>
     </Provider>
   );

@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
+import "./Movie.css";
+
 const useStyles = makeStyles((theme) => ({
   poster: {
     width: "80%",
@@ -18,15 +20,20 @@ const useStyles = makeStyles((theme) => ({
   },
   movieTitle: {
     width: "80%",
-    marginTop: "20px",
+    fontSize: "1.2rem",
+    margin: "1rem auto",
+    color: "#ffffff",
   },
 }));
 
 const Movie = ({ title, poster, id }) => {
   const classes = useStyles();
   return (
-    <Grid item xs={3} className={classes.cell}>
-      <Link to={`movie_info/${id}`}>
+    <Grid item xs={3} className={`${classes.cell} movie`}>
+      <Link
+        to={`movie_info/${id}`}
+        onClick={(e) => (!id ? e.preventDefault() : null)}
+      >
         <img src={poster} className={classes.poster} alt="movie poster" />
       </Link>
       <Typography

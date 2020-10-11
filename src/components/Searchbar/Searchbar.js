@@ -1,4 +1,10 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+
+import { Link } from "react-router-dom";
+
+import { changeSearchKeyword } from "../../actions";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -6,12 +12,9 @@ import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import MenuIcon from "@material-ui/icons/Menu";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import { SvgIcon } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import purple from "@material-ui/core/colors/purple";
 import orange from "@material-ui/core/colors/orange";
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -83,10 +85,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Searchbar = () => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const keyword = useSelector((state) => state.keyword);
+  const dispatch = useDispatch();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="primary" className={classes.appBar}>
+      <AppBar
+        position="static"
+        style={{ backgroundColor: "#f95959" }}
+        className={classes.appBar}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -96,8 +106,9 @@ const Searchbar = () => {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography className={classes.title} variant="h5" noWrap>
-            Mover
+            <Link to={"/popular"}>Mover</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -105,6 +116,15 @@ const Searchbar = () => {
             </div>
             <InputBase
               placeholder="Search…"
+              onChange={(evt) => {
+                evt.preventDefault();
+                dispatch(changeSearchKeyword(evt.target.value));
+              }}
+              onKeyDown={(evt) => {
+                if (evt.keyCode === 13) {
+                  history.push(`/searchMovie?keyword=${keyword}`);
+                }
+              }}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import "./MovieGrid.css";
 
@@ -17,9 +18,12 @@ const posterPath = (path) => {
 
 const MovieGrid = () => {
   const movies = useSelector((state) => state.movies);
+  const isLoading = useSelector((state) => state.isLoading);
+
+  console.log(movies);
 
   return (
-    <div>
+    <div className="movieGrid">
       <Grid
         container
         direction="row"
@@ -27,14 +31,19 @@ const MovieGrid = () => {
         justify="center"
         className="gridContainer"
       >
-        {Array.isArray(movies) &&
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          Array.isArray(movies) &&
           movies.map((movie) => (
             <Movie
-              title={movie.original_title}
+              title={movie.title}
               poster={posterPath(movie.poster_path)}
+              id={movie.id}
               key={uuidv4()}
             />
-          ))}
+          ))
+        )}
       </Grid>
     </div>
   );

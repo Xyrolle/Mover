@@ -11,8 +11,6 @@ const fetchMovieByID = async ({ id }) => {
     throw new Error(`Error while fetching: ${data.errors}`);
   }
 
-  console.log(data, "is");
-
   return data;
 };
 
@@ -22,8 +20,6 @@ const fetchPopularMovies = async () => {
   );
   const data = await response.json();
 
-  console.log(data);
-
   if (data.errors) {
     throw new Error(`Error while fetching: ${data.errors}`);
   }
@@ -31,20 +27,18 @@ const fetchPopularMovies = async () => {
   return data.results;
 };
 
-const fetchMoviesByKeyword = async (keyword) => {
-  console.log(keyword, "is the keyword");
+const fetchMoviesByKeyword = async ({ keyword }) => {
+  console.log(keyword, "issasd");
   const response = await fetch(
     `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&query=${keyword}&page=1&include_adult=true`
   );
   const data = await response.json();
 
-  console.log(keyword, "k[klklpk");
-
   if (data.errors) {
     throw new Error(`Error while fetching: ${data.errors}`);
   }
 
-  return data.results;
+  return data.results.filter((movie) => movie.poster_path);
 };
 
 export { fetchPopularMovies, fetchMoviesByKeyword, fetchMovieByID };
