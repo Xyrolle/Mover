@@ -1,0 +1,47 @@
+.moviePage .movieTitle {
+  font-size: 2rem;
+  margin-bottom: 1vh;
+}
+.moviePage .tagline {
+  font-style: italic;
+  margin: 1.2vh 0 0.8vh 0;
+}
+.moviePage p {
+  margin: 1vh 0;
+}
+
+@media only screen and (max-width: 640px) {
+  .moviePage {
+    margin-bottom: 10vh;
+  }
+  .moviePage img {
+    width: 64vw !important;
+  }
+  .moviePage h3 {
+    width: 70%;
+  }
+  .moviePage p {
+    margin: 1vh auto;
+    width: 58vw;
+  }
+  .moviePage .MuiRating-root {
+    display: flex;
+    justify-content: center;
+  }
+  .moviePage .tagline {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .moviePage .movieTitle {
+    font-size: 1.4rem;
+    margin: 2vh auto 1vh auto;
+    text-align: center;
+  }
+  .moviePage .MuiGrid-grid-xs-5 {
+    max-width: 100% !important;
+    flex-basis: 100%;
+  }
+}
+/*# sourceMappingURL=MoviePage.css.map */
+
+/*# sourceMappingURL=MoviePage.css.map */
