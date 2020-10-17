@@ -1,4 +1,4 @@
-# Mover website created with React + Redux + Saga
+# Mover is a website created with React + Redux + Saga
 
 *Mover* is an web app which is based on TMDb API and can be used to search for movies and reading detailed description about the movie to decide if it is worth to watch. 
 
