@@ -25,7 +25,7 @@ const App = () => {
       <MuiThemeProvider theme={theme}>
         <div>
           <Route path="/" component={Searchbar} />
-          <Route exact path="/popular" component={PopularPage} />
+          <Route exact path="/" component={PopularPage} />
           <Route path="/movie_info/:id" component={MoviePage} />
           <Route path="/searchMovie" component={SearchPage} />
         </div>
